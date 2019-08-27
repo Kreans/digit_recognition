@@ -1,0 +1,16 @@
+#canvas{
+    border: 1px solid gray;
+    width: 270px;
+    height: 270px;
+}
+
+#clear_button{
+    margin-top: 30px;
+}
+
+.buttons{
+    border: 1px solid gray;
+    width: 270px;
+    margin-bottom: 30px;
+}
+

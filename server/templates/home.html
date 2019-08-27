@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Digit recognition">
+  <meta name="author" content="Kreans">
+
+  <title>Digit recognition Demo</title>
+
+  <!-- Custom fonts for this template-->
+  <link href="{{ url_for('static', filename='vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet"
+    type="text/css">
+
+  <!-- Custom styles for this template-->
+  <link href="{{ url_for('static', filename='css/sb-admin.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+
+  <script src="{{ url_for('static', filename='js/my.js') }}"></script>
+
+  <script src="{{ url_for('static', filename='js/jquery-3.2.0.min.js') }}"></script>
+
+ 
+</head>
+
+<body id="page-top">
+
+  <nav class="navbar navbar-light" style="background-color: #f7f7f7;">
+
+      <h2>Digit recognition</h2>
+
+  </nav>
+
+  <div id="wrapper">
+
+    <div id="content-wrapper">
+
+      <div class="container-fluid">
+        {% block content %}
+
+        {% endblock content %}
+
+      </div>
+      <!-- /.container-fluid -->
+
+      <!-- Sticky Footer -->
+      <footer>
+        <div class="container my-auto">
+          <div class="copyright text-center my-auto">
+            <span>Copyright © MTKSoftware 2019</span>
+          </div>
+        </div>
+      </footer>
+
+    </div>
+    <!-- /.content-wrapper -->
+
+  </div>
+  <!-- /#wrapper -->
+
+</body>
+
+</html>

@@ -1,0 +1,91 @@
+{% extends "home.html" %}
+
+{% block content %}
+
+<!-- Card Example-->
+<div class="card mb-3">
+    <div class="card-header">
+        <i class="fas fa-edit"></i>
+       Handwritten Digit Prediction
+    </div>
+    <div class="card-body" align="center">
+        <div class="col-lg-6">
+            
+                <div class="row">
+
+                    <div class="col-xl-6 vcenter">
+
+                        <h4>Input Image</h4>
+                        <canvas id="canvas" ></canvas></br>
+                        <button id="clear_button" class="buttons">clear input</button>
+                        <button id="predict_button" class="buttons">predict</button>
+
+                    </div>
+
+                    <div class="col-xl-6" >
+
+                        <h4> Predictions</h4>
+                        <table class="table">
+                            <tbody>                               
+                                <tr>
+                                    <th scope="row">9</th>
+                                    <td id="td_0">0</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">8</th>
+                                    <td id="td_1" >0</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">7</th>
+                                    <td id="td_2" >0</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">6</th>
+                                    <td id="td_3" >0</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">5</th>
+                                    <td id="td_4" >0</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">4</th>
+                                    <td  id="td_5" > 0</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">3</th>
+                                    <td  id="td_6" >0</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">2</th>
+                                    <td id="td_7" >0</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td  id="td_8" >0</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">0</th>
+                                    <td id="td_9" >0</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card mb-3">
+    <div class="card-header">
+        <i class="fas fa-info-circle"></i>
+        Project Description
+    </div>
+    <div class="card-body" align="center">
+      <p>MNIST ("Modified National Institute of Standards and Technology") is the de facto “hello world” dataset of computer vision. Since its release in 1999, this classic dataset of handwritten images has served as the basis for benchmarking classification algorithms. As new machine learning techniques emerge, MNIST remains a reliable resource for researchers and learners alike. </p>
+    </div>
+</div>
+
+{% endblock content %}
