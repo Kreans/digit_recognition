@@ -2,3 +2,5 @@
 data/
 venv/
 server/*.png
+server/.idea
+server/__pycache__
