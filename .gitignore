@@ -1,4 +1,6 @@
 .ipynb_checkpoints
 data/
 venv/
-.idea/
+server/*.png
+server/.idea
+server/__pycache__

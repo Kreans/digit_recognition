@@ -3,7 +3,7 @@ var canvas,
     is_drawing = false,
     dragLastLocation,   // last drawn coords
     empty_result = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],  // clear prediction's table
-    api_path = "http://127.0.0.1:5000/api/predict";
+    api_path = "/api/predict";
 
 
 // get coords from canvas
@@ -74,7 +74,7 @@ function update_value(prediction_array) {
 
     for (let i = 0; i < 10; i++) {
 
-        document.getElementById("td_" + i).textContent = prediction_array[i];
+        document.getElementById("td_" + i).textContent = prediction_array[i].toFixed(5);
     }
 }
 
