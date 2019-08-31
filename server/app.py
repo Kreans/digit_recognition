@@ -1,9 +1,5 @@
-import numpy as np
 from flask import Flask, jsonify, render_template, request
-import base64
-from PIL import Image
-import io
-
+from model import Model
 
 app = Flask(__name__)
 app.secret_key = '35jt34dfsj!hw234@44[1].et1r9'
@@ -16,13 +12,10 @@ def home():
 
 @app.route('/api/predict', methods=['GET', 'POST'])
 def predict():
+    request_data = request.values.get('image')
+    result = model.predict(request_data)  # make prediction
 
-    data = parse_image(request.values.get('image'))
-
-    res = np.random.randn(10, 1)
-
-    return jsonify({"prediction": res.tolist(),
-                    "passed_values": "ss"})
+    return jsonify({"prediction": result.tolist()})
 
 
 @app.errorhandler(404)
@@ -30,29 +23,11 @@ def not_found(e):
     return render_template("404.html")
 
 
-def parse_image(image_str):
-
-    image_str = image_str.replace("data:image/png;base64,", "")
-    png = base64.b64decode(image_str)
-
-    with open('output.png', 'wb') as output:
-        output.write(png)
-
-    img = Image.open(io.BytesIO(png))
-    img = img.convert('L')
-
-    if img.size != (28, 28):
-        img = img.resize((28, 28), 1)
-
-    img.save("te_predict.png")
-    return img
-
-
 if __name__ == '__main__':
     try:
-       # model = Model("model/model.pkl", "model/scaler.pkl")
+        model = Model("model/model.h5")
         print("Model loaded.")
     except RuntimeError:
         print("Model doesn't exist!")
 
-    app.run(debug=True)
+    app.run(host='0.0.0.0', debug=False, port=5000) # flag debug must be set as False (keras requirements)
