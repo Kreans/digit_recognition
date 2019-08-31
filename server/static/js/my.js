@@ -15,6 +15,16 @@ function getCanvasCoordinates(event) {
     return {x: x, y: y};
 }
 
+    // Get the position of a touch relative to the canvas
+function getTouchPos(canvasDom, touchEvent) {
+    var rect = canvasDom.getBoundingClientRect();
+
+    return {
+        x: touchEvent.touches[0].clientX - rect.left,
+        y: touchEvent.touches[0].clientY - rect.top
+    };
+}
+
 function drawLine(position) {
 
     context.beginPath();
@@ -73,7 +83,6 @@ function clear_canvas() {
 function update_value(prediction_array) {
 
     for (let i = 0; i < 10; i++) {
-
         document.getElementById("td_" + i).textContent = prediction_array[i].toFixed(5);
     }
 }
@@ -92,7 +101,7 @@ function predict() {
         success: function (data) {
             update_value(data["prediction"])
         },
-        error: function(){
+        error: function () {
             update_value(empty_result)
         }
     });
@@ -116,7 +125,42 @@ function init() {
     canvas.addEventListener('mousedown', dragStart, false);
     canvas.addEventListener('mousemove', drag, false);
     canvas.addEventListener('mouseup', dragStop, false);
-    canvas.addEventListener('mouseleave', dragLeave, false)
+    canvas.addEventListener('mouseleave', dragLeave, false);
+
+    canvas.addEventListener("touchstart", function (e) {
+
+        e.preventDefault();
+        e.stopPropagation();
+
+        mousePos = getTouchPos(canvas, e);
+        var touch = e.touches[0];
+        var mouseEvent = new MouseEvent("mousedown", {
+            clientX: touch.clientX,
+            clientY: touch.clientY
+        });
+        canvas.dispatchEvent(mouseEvent);
+    }, false);
+
+    canvas.addEventListener("touchend touchcancel", function (e) {
+
+        var mouseEvent = new MouseEvent("mouseup", {
+            clientX: touch.clientX,
+            clientY: touch.clientY
+        });
+        canvas.dispatchEvent(mouseEvent);
+    }, false);
+
+    canvas.addEventListener("touchmove", function (e) {
+
+        e.preventDefault();
+        var touch = e.touches[0];
+        var mouseEvent = new MouseEvent("mousemove", {
+            clientX: touch.clientX,
+            clientY: touch.clientY
+        });
+        canvas.dispatchEvent(mouseEvent);
+
+    }, false);
 
 }
 
