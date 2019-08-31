@@ -3,7 +3,7 @@ var canvas,
     is_drawing = false,
     dragLastLocation,   // last drawn coords
     empty_result = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],  // clear prediction's table
-    api_path = "127.0.0.1/api/predict";
+    api_path = "/api/predict";
 
 
 // get coords from canvas
